@@ -27,3 +27,12 @@ export const loginSchema = yup.object({
       .required('Password is required'),
   }),
 });
+
+export const updateSchema = yup.object({
+  body: yup.object({
+    firstName: yup.string(),
+    lastName: yup.string(),
+    email: yup.string().email('Email form is not correct'),
+    password: yup.string().min(6, 'Password must be at least 6 characters'),
+  }),
+});

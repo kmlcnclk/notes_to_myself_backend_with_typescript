@@ -4,8 +4,13 @@ import {
   register,
   logout,
   profile,
+  update,
 } from '../controllers/user.controller';
-import { registerSchema, loginSchema } from '../middlewares/yup/user.yup';
+import {
+  registerSchema,
+  loginSchema,
+  updateSchema,
+} from '../middlewares/yup/user.yup';
 import validate from '../middlewares/yup/validate';
 import { getAccessToRoute } from '../middlewares/auth';
 
@@ -15,5 +20,6 @@ userRouter.post('/register', validate(registerSchema), register);
 userRouter.post('/login', validate(loginSchema), login);
 userRouter.get('/logout', [getAccessToRoute], logout);
 userRouter.get('/profile', [getAccessToRoute], profile);
+userRouter.put('/update', [getAccessToRoute, validate(updateSchema)], update);
 
 export default userRouter;

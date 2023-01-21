@@ -81,3 +81,38 @@ export const profile = expressAsyncHandler(
     });
   }
 );
+
+// Register
+export const update = expressAsyncHandler(
+  async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const { firstName, lastName, email, password } = req.body;
+    // @ts-ignore
+    const { id } = req.user;
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      return next(new CustomError('This user is not available', 404));
+    }
+
+    if (firstName) {
+      user.firstName = firstName;
+    }
+    if (lastName) {
+      user.lastName = lastName;
+    }
+    if (email) {
+      user.email = email;
+    }
+    if (password) {
+      user.password = password;
+    }
+
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: 'User successfully updated',
+    });
+  }
+);
