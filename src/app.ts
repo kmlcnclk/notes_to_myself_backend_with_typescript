@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import log from './tools';
+// import log from './tools';
 import databaseConnect from './databases/connectDatabase';
 import cors from 'cors';
 import router from './routers';
@@ -34,4 +34,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use(router);
 app.use(customErrorHandler);
 
-app.listen(PORT, () => log.info(`Server running ${process.env.URL}`));
+app.listen(PORT, () => console.info(`Server running ${process.env.URL}`));
