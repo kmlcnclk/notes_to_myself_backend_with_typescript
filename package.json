@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "start": "node dist/app.js",
