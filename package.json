@@ -8,9 +8,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "start": "npm run build && node dist/app.js",
-    "start:docker": "npm run build && npm run start",
-    "build": "rimraf dist && swc ./src -d dist"
+    "start": "node src/app.ts",
+    "start:docker": "npm run build && npm run start"
   },
   "keywords": [],
   "author": "",
