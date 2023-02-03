@@ -83,9 +83,7 @@ export const updateNoteById = expressAsyncHandler(
       note.content = await content;
     }
 
-    if (isCompleted) {
-      note.isCompleted = await isCompleted;
-    }
+    note.isCompleted = await isCompleted;
 
     await note.save();
 
