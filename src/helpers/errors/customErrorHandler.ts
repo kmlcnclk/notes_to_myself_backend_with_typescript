@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import CustomError from './CustomError';
-// import log from '../../tools';
+import log from '../../tools';
 
 interface CustomErrorType {
   name: string;
@@ -38,7 +38,7 @@ const customErrorHandler = (
     customError = new CustomError('Type Error : Please Check Your Input', 400);
   }
 
-  console.error(
+  log.error(
     `Name: ${customError.name}, Status Code: ${
       customError.status || 500
     }, Message: ${customError.message}`

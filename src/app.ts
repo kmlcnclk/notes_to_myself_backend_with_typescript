@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-// import log from './tools';
+import log from './tools';
 import databaseConnect from './databases/connectDatabase';
 import cors from 'cors';
 import router from './routers';
@@ -19,7 +19,7 @@ const PORT = toNumber(process.env.PORT) as number;
 
 const corsOptions = {
   origin: [
-    // 'https://youtube-music-frontend.vercel.app',
+    'https://notes-to-myself-frontend.vercel.app',
     'http://localhost:3000',
   ],
   optionsSuccessStatus: 200,
@@ -34,4 +34,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use(router);
 app.use(customErrorHandler);
 
-app.listen(PORT, () => console.info(`Server running ${process.env.URL}`));
+app.listen(PORT, () => log.info(`Server running ${process.env.URL}`));
